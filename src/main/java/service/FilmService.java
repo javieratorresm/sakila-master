@@ -38,7 +38,7 @@ public class FilmService {
         return filmFacadeEJB.find(id);
     }
 	@GET
-	@Path("{id}/actor")
+	@Path("{id}/actors")
 	@Consumes({"application/xml", "application/json"})
 	public Collection<Actor> actor(@PathParam("id") Integer id){
 			Film film =filmFacadeEJB.find(id);
