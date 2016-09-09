@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 
 import facade.AbstractFacade;
 import facade.ActorFacade;
+import model.Film;
 import model.Actor;
 
 @Stateless

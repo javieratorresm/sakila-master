@@ -13,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import facade.ActorFacade;
+import facade.FilmFacade;
 import model.Actor;
 import java.util.Collection;
 import model.Film;
@@ -23,6 +24,8 @@ public class ActorService {
 	
 	@EJB 
 	ActorFacade actorFacadeEJB;
+	@EJB
+	FilmFacade filmFacadeEJB;
 	
 	Logger logger = Logger.getLogger(ActorService.class.getName());
 	
@@ -61,6 +64,16 @@ public class ActorService {
         actorFacadeEJB.edit(entity);
     }
 	
+ @POST
+    @Path("{id}/films/{idFilm}")
+    @Consumes({"application/xml", "application/json"})
+    public void addFilm(@PathParam("id") Integer id, @PathParam("idFilm") Integer idF) {
+    	Actor actores = actorFacadeEJB.find(id);
+	Film filmes = filmFacadeEJB.find(idF);
+	actores.getFilmCollection().add(filmes);
+	actorFacadeEJB.edit(actores);
+    }
+
 
 }
 

@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 import facade.AbstractFacade;
 import facade.FilmFacade;
 import model.Film;
-
+import model.Actor;
 @Stateless
 public class FilmFacadeEJB extends AbstractFacade<Film> implements FilmFacade {
 	
@@ -23,5 +23,7 @@ public class FilmFacadeEJB extends AbstractFacade<Film> implements FilmFacade {
 	protected EntityManager getEntityManager() {
 		return this.em;
 	}
+
+
 
 }

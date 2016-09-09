@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import model.Film;
+import model.Actor;
 
 @Local
 public interface FilmFacade {
@@ -22,5 +23,6 @@ public interface FilmFacade {
 	public List<Film> findRange(int[] range);
 
 	public int count();
+
 
 }
