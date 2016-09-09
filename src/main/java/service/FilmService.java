@@ -44,8 +44,8 @@ public class FilmService {
 	@Consumes({"application/xml", "application/json"})
 	public Collection<Actor> actor(@PathParam("id") Integer id){
 			Film film =filmFacadeEJB.find(id);
-			Collection<Actor> afilms= film.getActorCollection();
-			return afilms;
+			Collection<Actor> a_films= film.getActorCollection();
+			return a_films;
 	}
 
 
@@ -66,11 +66,16 @@ public class FilmService {
  @POST
     @Path("{id}/actors/{idActor}")
     @Consumes({"application/xml", "application/json"})
-    public void addActor(@PathParam("id") Integer id, @PathParam("idActor") Integer idF) {
-    	Film film = filmFacadeEJB.find(idF);
-    	Actor actor = actorFacadeEJB.find(id);
-	film.getActorCollection().add(actor);
-	filmFacadeEJB.edit(film);
-    }
+    public void addActor(@PathParam("id") Integer id, @PathParam("idActor") Integer idA) {
+    	
+
+    	Actor actore = actorFacadeEJB.find(idA);
+    	if (actore != null)
+ 	{
+ 		Film film = filmFacadeEJB.find(id);
+    	Actor actor = actorFacadeEJB.find(idA);
+		film.getActorCollection().add(actor);
+		filmFacadeEJB.edit(film);
+    }}
 
 }
